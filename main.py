@@ -12,8 +12,9 @@ from selenium.webdriver.chrome.service import Service as ChromeService
 class spotifyUpload():
     def __init__(self):
 
-        user = "media.alfc@gmail.com"
-        pwd = "_abundantlife@"
+        load_dotenv()
+        user = os.getenv("USER")
+        pwd = os.getenv("PASS")
 
         chrome_options = Options()
         chrome_options.add_argument("--window-size=1920,1080")
@@ -41,7 +42,7 @@ class spotifyUpload():
     def uploadFiles(self):
         
         uploadepisode = self.wait.until(EC.presence_of_element_located((By.XPATH,'//input[@type="file"]')))
-        time.sleep(500)
+        self.driver.save_screenshot("image.png")
         print(uploadepisode)
 
 spotifyUpload()
