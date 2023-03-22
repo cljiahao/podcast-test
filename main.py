@@ -25,7 +25,7 @@ class spotifyUpload():
         self.driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()),options=chrome_options)
         self.wait = WebDriverWait(self.driver, 300)
         self.login(user,pwd)
-        self.uploadFiles()
+        self.uploadFiles(os.path.join(os.getcwd(),"spotify","Eng"),"test.mp3")
         print("Published")
 
     def login(self,user,pwd):
@@ -39,9 +39,10 @@ class spotifyUpload():
         password.send_keys(pwd)
         username.submit()        # Submit Login
 
-    def uploadFiles(self):
+    def uploadFiles(self,spotPath,fileName):
         
         uploadepisode = self.wait.until(EC.presence_of_element_located((By.XPATH,'//input[@type="file"]')))
+        uploadepisode.send_keys(os.path.join(spotPath,fileName))
         self.driver.save_screenshot("image.png")
         print(uploadepisode)
 
