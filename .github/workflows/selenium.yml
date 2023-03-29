@@ -3,8 +3,8 @@ name: Selenium Tests
 on: [push]
 
 env:
-  USER: ${{ secrets.USER }}
-  PASS: ${{ secrets.PASS }}
+  EngUSER: ${{ secrets.ENGUSER }}
+  EngPASS: ${{ secrets.ENGPASS }}
 
 jobs:
   build:
